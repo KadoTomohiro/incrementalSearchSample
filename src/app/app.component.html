@@ -1,0 +1,14 @@
+<label for="car">車検索</label>
+<input type="text"
+       id="car" name="car" list="list"
+       [ngModel]="query"
+       (ngModelChange)="search($event)"
+>
+{{selected?.name}}
+<div id="list">
+  <ng-container *ngFor="let car of searchResult | async">
+    <div (click)="select(car)">{{car.id}}: {{car.name}}</div>
+  </ng-container>
+</div>
+
+<router-outlet></router-outlet>
